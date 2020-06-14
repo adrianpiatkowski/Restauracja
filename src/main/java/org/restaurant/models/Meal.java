@@ -1,5 +1,8 @@
 package org.restaurant.models;
 
+import org.springframework.stereotype.Service;
+
+
 public class Meal {
 
     private String name;

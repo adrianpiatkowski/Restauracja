@@ -1,16 +1,22 @@
 package org.restaurant.models.services.dao;
 
 import org.restaurant.models.Meal;
+import org.restaurant.models.MealDatabase;
 import org.restaurant.models.OrderR;
 import org.springframework.stereotype.Service;
 
 import java.util.ArrayList;
+import java.util.LinkedHashSet;
 import java.util.List;
 import java.util.Set;
 
 
 @Service
 public class OrderDaoImpl implements OrderDao {
+
+    private MealDatabase mealDatabase;
+
+    private OrderDao repository;
 
     private List<OrderR> orderList;
 
@@ -38,27 +44,51 @@ public class OrderDaoImpl implements OrderDao {
         }
     }
 
+
+
+
+
     @Override
     public void addMealToOrder(OrderR order, Meal meal) {
-        //todo repair
-        Set<Meal> ourMeals = (Set<Meal>) order.getMealList();
+
+
+        List<Meal> ourMeals =  order.getMealList();
         ourMeals.add(meal);
-        order.setMealList((List<Meal>)ourMeals);
+        order.setMealList( ourMeals);
     }
 
     @Override
     public void removeMealFromOrder(OrderR order, Meal meal) {
-        //todo implement
+
+        List<Meal> listaMealsow =  order.getMealList();
+
+        for (Meal meal2: listaMealsow){
+            if (meal2.getName().equals(meal.getName())){
+                listaMealsow.remove(meal2);
+                break;
+            }
+        }
+
+        order.setMealList(listaMealsow);
+
+
+
+
     }
 
     @Override
     public boolean checkIfMealAppearInOurOrder(OrderR order, Meal meal){
-        //todo repair
-        for (int i = 0; i > order.getMealList().size(); i++) {
-            if (order.getMealList().get(i).equals(meal)){
-                return false;
-            }
+
+
+        for (Meal meal1:order.getMealList()
+             ) {if (meal1.getName().equals(meal.getName())){
+                 return true;
+
+             }
+
         }
-        return true;
+        return false;
+
+
     }
 }

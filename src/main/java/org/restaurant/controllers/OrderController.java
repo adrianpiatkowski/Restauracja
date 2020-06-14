@@ -1,5 +1,6 @@
 package org.restaurant.controllers;
 
+import lombok.RequiredArgsConstructor;
 import org.restaurant.models.OrderR;
 import org.restaurant.models.services.Restaurant;
 import org.restaurant.models.services.dao.OrderDao;
@@ -10,6 +11,7 @@ import org.springframework.web.bind.annotation.*;
 import org.restaurant.models.UserRequest;
 
 @Controller
+@RequiredArgsConstructor
 public class OrderController {
 
     @Autowired
@@ -23,6 +25,9 @@ public class OrderController {
         orderDao.addOrder(new OrderR());
         ourOrderR = orderDao.getAllOrders().get(0);
         model.addAttribute("userRequest", new UserRequest());
+        if (ourOrderR.getMealList().size()>0){
+            model.addAttribute("currentOrder", "Your Current OrderR: " + ourOrderR.getMealList().toString());
+        }
         return "order";
     }
 
@@ -62,7 +67,7 @@ public class OrderController {
         if (ourOrderR.getMealList().size()>0){
             model.addAttribute("currentOrder", "Your Current OrderR: " + ourOrderR.getMealList().toString());
         }
-        return "order";
+        return "redirect:order";
     }
 
     @RequestMapping(params = "placeOrder", method = RequestMethod.POST) public String orderPlace(
