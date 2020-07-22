@@ -1,8 +1,4 @@
 package org.restaurant.models.services.dao;
-
-/**
- * Imports section
- */
 import org.junit.AfterClass;
 import org.junit.BeforeClass;
 import org.junit.Test;
@@ -10,19 +6,14 @@ import org.restaurant.models.Meal;
 import org.restaurant.models.OrderR;
 
 import static org.junit.Assert.*;
-
 public class OrderDaoImplTest {
-
     private static OrderDaoImpl orderDao;
-
     @BeforeClass public static void start() {
         orderDao = new OrderDaoImpl();
     }
-
     @AfterClass public static void stop() throws Exception {
         orderDao = null;
     }
-
     @Test public void testOrder() throws Exception {
         assertNotNull(orderDao.getAllOrders());
         assertEquals(orderDao.getAllOrders().size(), 0);

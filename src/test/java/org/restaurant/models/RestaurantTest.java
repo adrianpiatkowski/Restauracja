@@ -12,17 +12,13 @@ import java.util.List;
 import static org.junit.Assert.*;
 
 public class RestaurantTest {
-
     private static Restaurant restaurant;
-
     @BeforeClass public static void start() {
         restaurant = new Restaurant();
     }
-
     @AfterClass public static void stop() throws Exception {
         restaurant = null;
     }
-
     @Test public void restaurantTests() throws Exception {
         assertNotNull(restaurant.getMenu());
         assertTrue(restaurant.checkIfMealExist("Pizza"));

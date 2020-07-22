@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Sale</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css"
+          integrity="sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk" crossorigin="anonymous">
+</head>
+<body class="p-3 mb-2 bg-secondary text-white" >
+    <div th:replace="fragments/top_bar :: div.top-bar"></div>
+    <div th:replace="fragments/scripts :: div.scripts-top-bar"></div>
+    <div style="text-align: center;">
+        <span style="font-family: 'Swis721 BlkEx BT'; font-size: xx-large; color: #FFFFFF; ">
+           <br> <p th:text="${sales}"></p>
+        </span>
+    </div>
+</body>
+</html>

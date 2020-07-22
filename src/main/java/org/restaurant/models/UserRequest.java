@@ -1,35 +1,27 @@
 package org.restaurant.models;
-
-
-import org.springframework.stereotype.Service;
-
-
+import lombok.Data;
+import lombok.EqualsAndHashCode;
+import lombok.ToString;
+@Data
 public class UserRequest {
-
-    private String name;
-    private String mealName;
-
+    public String name;
+    @ToString.Exclude
+    @EqualsAndHashCode.Exclude
+    public String mealName;
+    private Meal meal;
     public UserRequest() {
     }
-
     public UserRequest(String name, String mealName) {
         this.name = name;
         this.mealName = mealName;
     }
-
     public String getName() {
         return name;
     }
-
     public void setName(String name) {
         this.name = name;
     }
-
     public String getMealName() {
         return mealName;
-    }
-
-    public void setMealName(String mealName) {
-        this.mealName = mealName;
     }
 }
